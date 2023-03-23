@@ -1,0 +1,25 @@
+zuul:
+  prefix: /api
+  ignoredServices: '*'
+  routes:
+    task-service: /task/**
+    api-gateway: /gateway/**
+
+
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,text/css,application/javascript
+    min-response-size: 2048
+
+---
+---
+spring:
+  config:
+    activate:
+      on-profile: docker
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server:8761/eureka/
